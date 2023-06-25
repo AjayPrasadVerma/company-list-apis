@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/Home";
-import CompanyPage from "./pages/Company";
+import CompanyPage, { loader as companyLoader } from "./pages/Company";
 import NewCompanyPage from "./pages/NewCompany";
 import EditCompanyPage from "./pages/EditCompany";
 import RootLayout from "./pages/Root";
@@ -18,7 +18,11 @@ const router = createBrowserRouter([
         path: "company",
         element: <CompanyRootLayout />,
         children: [
-          { index: true, element: <CompanyPage />, loader: () => {} },
+          {
+            index: true,
+            element: <CompanyPage />,
+            loader: companyLoader,
+          },
           { path: "edit", element: <EditCompanyPage /> },
           {
             path: "new",

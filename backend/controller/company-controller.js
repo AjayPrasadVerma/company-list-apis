@@ -1,7 +1,7 @@
 const Company = require("../schema/company-schema");
 const { isValidText } = require("../util/validation");
 
-const addCompany = async (req, res, next) => {
+const addCompany = async (req, res) => {
   const data = req.body;
 
   let errors = {};
@@ -27,8 +27,17 @@ const addCompany = async (req, res, next) => {
     await newCompany.save();
     res.status(201).json(newCompany);
   } catch (error) {
-    next(error);
+    res.status(409).json({ message: error.message });
   }
 };
 
-module.exports = addCompany;
+const getCompany = async (req, res) => {
+  try {
+    const companyData = await Company.find({}, { about: 0 });
+    res.status(200).json(companyData);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+module.exports = { addCompany, getCompany };

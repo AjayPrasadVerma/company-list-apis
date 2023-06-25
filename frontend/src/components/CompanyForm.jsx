@@ -79,23 +79,27 @@ export const action = async ({ request, params }) => {
 
   let url = "http://localhost:8181/company";
 
-  const response = await fetch(url, {
-    method: method,
-    body: JSON.stringify(companyData),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  try {
+    const response = await fetch(url, {
+      method: method,
+      body: JSON.stringify(companyData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-  if (response.status === 422) {
-    return response;
+    if (response.status === 422) {
+      return response;
+    }
+
+    if (!response.ok) {
+      throw json({ message: "Could not save company." }, { status: 500 });
+    }
+
+    return redirect("/company");
+  } catch (error) {
+    console.log(error);
   }
-
-  if (!response.ok) {
-    throw json({ message: "Could not save company." }, { status: 500 });
-  }
-
-  return redirect("/company");
 };
 
 export default CompanyForm;

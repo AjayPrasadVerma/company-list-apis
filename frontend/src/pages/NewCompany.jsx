@@ -1,5 +1,7 @@
+import CompanyForm from "../components/CompanyForm";
+
 const NewCompanyPage = () => {
-  return <h1>New Company Page</h1>;
+  return <CompanyForm method="post" />;
 };
 
 export default NewCompanyPage;

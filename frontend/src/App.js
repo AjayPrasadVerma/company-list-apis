@@ -5,16 +5,23 @@ import CompanyListPage from "./pages/CompanyList";
 import NewCompanyPage from "./pages/NewCompany";
 import EditCompanyPage from "./pages/EditCompany";
 import RootLayout from "./pages/Root";
+import CompanyRootLayout from "./pages/CompanyRoot";
 
 const router = createBrowserRouter([
   {
     path: "",
     element: <RootLayout />,
     children: [
-      { path: "", element: <HomePage /> },
-      { path: "/company", element: <CompanyListPage /> },
-      { path: "/new", element: <NewCompanyPage /> },
-      { path: "/edit", element: <EditCompanyPage /> },
+      { index: true, element: <HomePage /> },
+      {
+        path: "company",
+        element: <CompanyRootLayout />,
+        children: [
+          { index: true, element: <CompanyListPage /> },
+          { path: "edit", element: <EditCompanyPage /> },
+          { path: "new", element: <NewCompanyPage /> },
+        ],
+      },
     ],
   },
 ]);

@@ -24,7 +24,7 @@ function MainNavigation() {
                 isActive ? classes.active : undefined
               }
             >
-              Companies
+              Company
             </NavLink>
           </li>
         </ul>

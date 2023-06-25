@@ -1,0 +1,89 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+#sub-container {
+  min-width: 700px;
+  margin: 10px auto auto auto;
+  padding: 30px 40px;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px #ccc;
+}
+
+#sub-container h1 {
+  margin-bottom: 30px;
+}
+
+input[type="text"],
+textarea {
+  margin: 5px 0px;
+  border: 1px solid #b7c4cf;
+  background: #fff;
+  border-radius: 5px;
+  color: #809db5;
+  padding: 10px;
+  font-size: 18px;
+  width: 100%;
+  resize: vertical;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #063860;
+}
+.c-info {
+  margin-top: 10px;
+}
+
+.link > a {
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 3px;
+}
+
+.link > a:hover {
+  opacity: 0.8;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+.form-container label:after {
+  content: " *";
+  color: red;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.actions button {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+  margin-top: 30px;
+  border-radius: 4px;
+  background-color: #04aa6d;
+  color: #ffffff;
+  border: none;
+}
+
+.actions button[type="button"] {
+  background-color: #d34e07;
+  color: #ffffff;
+}
+
+.actions button:hover {
+  background-color: #026541;
+}
+
+.actions button[type="button"]:hover {
+  background-color: #893203;
+}

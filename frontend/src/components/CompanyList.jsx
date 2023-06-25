@@ -31,51 +31,39 @@ const TBody = styled(TableRow)`
 
 const CompanyList = ({ conpamyList }) => {
   return (
-    <StyledTable>
-      <TableHead>
-        <THead>
-          <TableCell>Name</TableCell>
-          <TableCell>Location</TableCell>
-          <TableCell>S No.</TableCell>
-          <TableCell></TableCell>
-        </THead>
-      </TableHead>
-      <TableBody>
-        {conpamyList.map((company, index) => (
-          <TBody key={company._id}>
-            <TableCell>{index + 1}</TableCell>
-            <TableCell>{company.name}</TableCell>
-            <TableCell>{company.location}</TableCell>
-            <TableCell>
-              <Button
-                variant="contained"
-                color="warning"
-                style={{ marginRight: 10 }}
-                component={Link}
-                to={"edit"}
-              >
-                Edit
-              </Button>
-              <Button
-                variant="contained"
-                style={{ marginRight: 10 }}
-                color="error"
-              >
-                Delete
-              </Button>
-              <Button
-                variant="contained"
-                color="success"
-                component={Link}
-                to={`/company/${company._id}`}
-              >
-                View
-              </Button>
-            </TableCell>
-          </TBody>
-        ))}
-      </TableBody>
-    </StyledTable>
+    <>
+      {conpamyList.length !== 0 && (
+        <StyledTable>
+          <TableHead>
+            <THead>
+              <TableCell>S No.</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Location</TableCell>
+              <TableCell></TableCell>
+            </THead>
+          </TableHead>
+          <TableBody>
+            {conpamyList.map((company, index) => (
+              <TBody key={company._id}>
+                <TableCell>{index + 1}</TableCell>
+                <TableCell>{company.name}</TableCell>
+                <TableCell>{company.location}</TableCell>
+                <TableCell>
+                  <Button
+                    variant="contained"
+                    color="success"
+                    component={Link}
+                    to={`/company/${company._id}`}
+                  >
+                    View
+                  </Button>
+                </TableCell>
+              </TBody>
+            ))}
+          </TableBody>
+        </StyledTable>
+      )}
+    </>
   );
 };
 

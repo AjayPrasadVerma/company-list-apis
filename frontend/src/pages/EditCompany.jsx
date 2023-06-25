@@ -1,5 +1,11 @@
+import CompanyForm from "../components/CompanyForm";
+import { useRouteLoaderData } from "react-router-dom";
+
 const EditCompanyPage = () => {
-  return <h1>EditCompanyPage</h1>;
+  const data = useRouteLoaderData("company-details");
+  const companyData = data.company;
+
+  return <CompanyForm companyData={companyData} method="put" />;
 };
 
 export default EditCompanyPage;

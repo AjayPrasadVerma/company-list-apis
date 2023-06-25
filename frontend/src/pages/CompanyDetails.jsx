@@ -37,9 +37,9 @@ export const loadCompanyData = async (id) => {
   }
 };
 
-export function loader({ params }) {
+export async function loader({ params }) {
   const id = params.companyId;
   return defer({
-    company: loadCompanyData(id),
+    company: await loadCompanyData(id),
   });
 }

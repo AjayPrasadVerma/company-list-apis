@@ -1,10 +1,19 @@
-import { Form, useNavigation, json, redirect } from "react-router-dom";
+import {
+  Form,
+  useNavigation,
+  useNavigate,
+  json,
+  redirect,
+} from "react-router-dom";
 import classes from "./CompanyForm.module.css";
 
-function CompanyForm({ method, event }) {
+function CompanyForm({ method, companyData }) {
   const navigation = useNavigation();
+  const navigate = useNavigate();
 
-  const cancelHandler = () => {};
+  const cancelHandler = () => {
+    navigate("..");
+  };
 
   const isSubmiitting = navigation.state === "submitting";
 
@@ -20,7 +29,7 @@ function CompanyForm({ method, event }) {
               type="text"
               name="companyName"
               required
-              defaultValue={event ? event.name : ""}
+              defaultValue={companyData ? companyData.name : ""}
             />
           </div>
           <div className={classes["c-info"]}>
@@ -30,18 +39,18 @@ function CompanyForm({ method, event }) {
               type="text"
               name="location"
               required
-              defaultValue={event ? event.location : ""}
+              defaultValue={companyData ? companyData.location : ""}
             />
           </div>
 
           <div className={classes["c-info"]}>
-            <label htmlFor="about">Description</label>
+            <label htmlFor="about">About</label>
             <textarea
-              id="description"
-              name="description"
+              id="about"
+              name="about"
               rows="5"
               required
-              defaultValue={event ? event.description : ""}
+              defaultValue={companyData ? companyData.about : ""}
             />
           </div>
           <div className={classes.actions}>
@@ -64,7 +73,7 @@ function CompanyForm({ method, event }) {
 
 /**
  * @description
- * making the API request to add company and edit company details
+ * making the API request to add new company and edit company details
  */
 
 export const action = async ({ request, params }) => {
@@ -74,10 +83,15 @@ export const action = async ({ request, params }) => {
   const companyData = {
     name: data.get("companyName"),
     location: data.get("location"),
-    description: data.get("description"),
+    about: data.get("about"),
   };
 
   let url = "http://localhost:8181/company";
+
+  if (method === "PUT") {
+    const id = params.companyId;
+    url = "http://localhost:8181/company/" + id;
+  }
 
   try {
     const response = await fetch(url, {

@@ -10,8 +10,8 @@ const addCompany = async (req, res) => {
     errors.title = "Invalid name.";
   }
 
-  if (!isValidText(data.description)) {
-    errors.description = "Invalid description.";
+  if (!isValidText(data.about)) {
+    errors.about = "Invalid description.";
   }
 
   if (Object.keys(errors).length > 0) {
@@ -49,4 +49,18 @@ const getCompany = async (req, res) => {
   }
 };
 
-module.exports = { addCompany, getCompanies, getCompany };
+const updateCompany = async (req, res) => {
+  try {
+    const updatedCompany = await Company.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
+
+    res.status(200).json(updatedCompany);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
+module.exports = { addCompany, getCompanies, getCompany, updateCompany };

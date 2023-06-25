@@ -32,10 +32,13 @@ const router = createBrowserRouter([
             loader: companyDetailsLoader,
             children: [
               { index: true, element: <CompanyDetailsPage /> },
-              { path: "edit", element: <EditCompanyPage /> },
+              {
+                path: "edit",
+                element: <EditCompanyPage />,
+                action: manuplateCompanyAction,
+              },
             ],
           },
-          { path: "edit", element: <EditCompanyPage /> },
           {
             path: "new",
             element: <NewCompanyPage />,

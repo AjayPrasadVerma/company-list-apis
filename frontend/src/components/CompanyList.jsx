@@ -12,7 +12,8 @@ import {
 
 const StyledTable = styled(Table)`
   width: 90%;
-  margin: 50px auto 20px auto;
+  margin: 20px auto 20px auto;
+  background: #0000008f;
 `;
 
 const THead = styled(TableRow)`
@@ -26,6 +27,7 @@ const THead = styled(TableRow)`
 const TBody = styled(TableRow)`
   & > td {
     font-size: 20px;
+    color: white;
   }
 `;
 

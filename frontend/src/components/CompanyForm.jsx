@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import classes from "./CompanyForm.module.css";
 
-function CompanyForm({ method, companyData }) {
+function CompanyForm({ method, companyData, heading }) {
   const navigation = useNavigation();
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ function CompanyForm({ method, companyData }) {
   return (
     <div className={classes["form-container"]}>
       <div id={classes["sub-container"]}>
-        <h1>Add Company</h1>
+        <h1>{heading}</h1>
         <Form method={method}>
           <div className={classes["c-info"]}>
             <label htmlFor="companyName">Company Name</label>

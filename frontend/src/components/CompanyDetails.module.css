@@ -2,7 +2,7 @@
   max-width: calc(100% - 100px);
   margin: 10px auto auto auto;
   padding: 30px 40px;
-  background: #fff;
+  background-color: black;
   border-radius: 7px;
   box-shadow: 0 2px 5px #ccc;
 }

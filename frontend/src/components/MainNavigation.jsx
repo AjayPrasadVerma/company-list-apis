@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import MainLogo from "./MainLogo";
 import classes from "./MainNavigation.module.css";
 
 function MainNavigation() {
@@ -6,6 +7,11 @@ function MainNavigation() {
     <header className={classes.header}>
       <nav>
         <ul className={classes.list}>
+          <li>
+            <NavLink to="/" className={classes.active}>
+              <MainLogo size="2" />
+            </NavLink>
+          </li>
           <li>
             <NavLink
               to="/"
@@ -29,6 +35,10 @@ function MainNavigation() {
           </li>
         </ul>
       </nav>
+      <div className={classes.btn}>
+        <button>Sign Up</button>
+        <button>Log In</button>
+      </div>
     </header>
   );
 }

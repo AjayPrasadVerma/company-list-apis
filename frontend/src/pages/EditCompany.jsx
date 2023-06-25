@@ -5,7 +5,13 @@ const EditCompanyPage = () => {
   const data = useRouteLoaderData("company-details");
   const companyData = data.company;
 
-  return <CompanyForm companyData={companyData} method="put" />;
+  return (
+    <CompanyForm
+      companyData={companyData}
+      method="put"
+      heading="Edit Details"
+    />
+  );
 };
 
 export default EditCompanyPage;

@@ -7,10 +7,14 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
+  /* color-scheme: light dark; */
+  /* background: #eee;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+  color: #1f1d1b; */
 
-  color-scheme: light dark;
-  color: #242424;
-  background-color: #fff;
+  background-color: #010005;
+  background-image: url("https://www.transparenttextures.com/patterns/crissxcross.png");
+  color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

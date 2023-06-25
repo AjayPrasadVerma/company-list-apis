@@ -14,13 +14,15 @@
   font-size: 18px;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
-  color: var(--color-primary-900);
+  color: #5c5c5c;
   text-decoration: none;
+  border: 1px solid #5c5c5c;
 }
 
 .list a:hover,
 .list a:active,
 .list a.active {
-  background-color: var(--color-primary-600);
-  color: #f76103;
+  background-color: black;
+  border-color: #ccc;
+  color: #ccc;
 }

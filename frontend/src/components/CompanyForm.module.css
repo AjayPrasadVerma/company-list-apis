@@ -7,9 +7,10 @@
   min-width: 700px;
   margin: 10px auto auto auto;
   padding: 30px 40px;
-  background: #fff;
+  /* background: #fff; */
+  background-color: black;
   border-radius: 7px;
-  box-shadow: 0 2px 5px #ccc;
+  box-shadow: 0 2px 5px #545353;
 }
 
 #sub-container h1 {
@@ -20,7 +21,7 @@ input[type="text"],
 textarea {
   margin: 5px 0px;
   border: 1px solid #b7c4cf;
-  background: #fff;
+  background-color: black;
   border-radius: 5px;
   color: #809db5;
   padding: 10px;

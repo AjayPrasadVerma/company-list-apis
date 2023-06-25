@@ -9,7 +9,7 @@ const companySchema = mongoose.Schema({
     type: String,
     requird: true,
   },
-  description: {
+  about: {
     type: String,
     requird: true,
   },

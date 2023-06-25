@@ -9,7 +9,6 @@ import {
   TableRow,
   styled,
 } from "@mui/material";
-import classes from "./CompanyList.module.css";
 
 const StyledTable = styled(Table)`
   width: 90%;
@@ -35,10 +34,10 @@ const CompanyList = ({ conpamyList }) => {
     <StyledTable>
       <TableHead>
         <THead>
-          <TableCell className={classes["t-row"]}>S No.</TableCell>
-          <TableCell className={classes["t-row"]}>Name</TableCell>
-          <TableCell className={classes["t-row"]}>Location</TableCell>
-          <TableCell className={classes["t-row"]}></TableCell>
+          <TableCell>Name</TableCell>
+          <TableCell>Location</TableCell>
+          <TableCell>S No.</TableCell>
+          <TableCell></TableCell>
         </THead>
       </TableHead>
       <TableBody>
@@ -53,7 +52,7 @@ const CompanyList = ({ conpamyList }) => {
                 color="warning"
                 style={{ marginRight: 10 }}
                 component={Link}
-                to={`/edit/`}
+                to={"edit"}
               >
                 Edit
               </Button>
@@ -64,7 +63,12 @@ const CompanyList = ({ conpamyList }) => {
               >
                 Delete
               </Button>
-              <Button variant="contained" color="success">
+              <Button
+                variant="contained"
+                color="success"
+                component={Link}
+                to={`/company/${company._id}`}
+              >
                 View
               </Button>
             </TableCell>

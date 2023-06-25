@@ -31,7 +31,7 @@ const addCompany = async (req, res) => {
   }
 };
 
-const getCompany = async (req, res) => {
+const getCompanies = async (req, res) => {
   try {
     const companyData = await Company.find({}, { about: 0 });
     res.status(200).json(companyData);
@@ -40,4 +40,13 @@ const getCompany = async (req, res) => {
   }
 };
 
-module.exports = { addCompany, getCompany };
+const getCompany = async (req, res) => {
+  try {
+    const companyData = await Company.findOne({ _id: req.params.id });
+    res.status(200).json(companyData);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+module.exports = { addCompany, getCompanies, getCompany };

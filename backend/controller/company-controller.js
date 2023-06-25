@@ -63,4 +63,19 @@ const updateCompany = async (req, res) => {
   }
 };
 
-module.exports = { addCompany, getCompanies, getCompany, updateCompany };
+const deleteCompany = async (req, res) => {
+  try {
+    const removedComapny = await Company.findByIdAndRemove(req.params.id);
+    res.status(200).json(removedComapny);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
+module.exports = {
+  addCompany,
+  getCompanies,
+  getCompany,
+  updateCompany,
+  deleteCompany,
+};

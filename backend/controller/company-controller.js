@@ -1,5 +1,5 @@
 const Company = require("../schema/company-schema");
-const isValidText = require("../util/validation");
+const { isValidText } = require("../util/validation");
 
 const addCompany = async (req, res, next) => {
   const data = req.body;

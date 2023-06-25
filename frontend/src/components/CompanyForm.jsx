@@ -1,20 +1,24 @@
+import { Form, useNavigation, json, redirect } from "react-router-dom";
 import classes from "./CompanyForm.module.css";
 
 function CompanyForm({ method, event }) {
+  const navigation = useNavigation();
+
   const cancelHandler = () => {};
 
-  const isSubmiitting = true;
+  const isSubmiitting = navigation.state === "submitting";
 
   return (
     <div className={classes["form-container"]}>
       <div id={classes["sub-container"]}>
         <h1>Add Company</h1>
-        <form action="/signup" method={method}>
+        <Form method={method}>
           <div className={classes["c-info"]}>
-            <label htmlFor="CompanyName">Company Name</label>
+            <label htmlFor="companyName">Company Name</label>
             <input
+              id="companyName"
               type="text"
-              name="CompanyName"
+              name="companyName"
               required
               defaultValue={event ? event.name : ""}
             />
@@ -22,6 +26,7 @@ function CompanyForm({ method, event }) {
           <div className={classes["c-info"]}>
             <label htmlFor="location">Location</label>
             <input
+              id="location"
               type="text"
               name="location"
               required
@@ -49,13 +54,48 @@ function CompanyForm({ method, event }) {
             </button>
             <button disabled={isSubmiitting}>
               {isSubmiitting ? "Submitting..." : "Save"}
-              Save
             </button>
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   );
 }
+
+/**
+ * @description
+ * making the API request to add company and edit company details
+ */
+
+export const action = async ({ request, params }) => {
+  const method = request.method;
+  const data = await request.formData();
+
+  const companyData = {
+    name: data.get("companyName"),
+    location: data.get("location"),
+    description: data.get("description"),
+  };
+
+  let url = "http://localhost:8181/company";
+
+  const response = await fetch(url, {
+    method: method,
+    body: JSON.stringify(companyData),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.status === 422) {
+    return response;
+  }
+
+  if (!response.ok) {
+    throw json({ message: "Could not save company." }, { status: 500 });
+  }
+
+  return redirect("/company");
+};
 
 export default CompanyForm;

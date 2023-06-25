@@ -1,16 +1,17 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const Connection = require("./database/config");
 const app = express();
 const companyRoute = require("./routes/route");
 
 PORT = 8181 || process.env.PORT;
 
-Connection();
-
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
+Connection();
+app.use(cors());
 
 app.use("/company", companyRoute);
 

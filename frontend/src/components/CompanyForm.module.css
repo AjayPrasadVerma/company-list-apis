@@ -5,7 +5,7 @@
 
 #sub-container {
   min-width: 700px;
-  margin: 10px auto auto auto;
+  margin: 0px auto auto auto;
   padding: 30px 40px;
   /* background: #fff; */
   background-color: black;
@@ -17,7 +17,11 @@
   margin-bottom: 30px;
 }
 
-input[type="text"],
+.form-control {
+  margin-top: 10px;
+}
+
+.form-control input[type="text"],
 textarea {
   margin: 5px 0px;
   border: 1px solid #b7c4cf;
@@ -30,13 +34,10 @@ textarea {
   resize: vertical;
 }
 
-input[type="text"]:focus,
+.form-control input[type="text"]:focus,
 textarea:focus {
   outline: none;
   border-color: #063860;
-}
-.c-info {
-  margin-top: 10px;
 }
 
 .link > a {
@@ -87,4 +88,37 @@ a:hover {
 
 .actions button[type="button"]:hover {
   background-color: #893203;
+}
+
+.saveBtn:disabled,
+.saveBtn:disabled:hover,
+.saveBtn:disabled:active {
+  background-color: #808080;
+  color: #515151;
+  cursor: not-allowed;
+}
+
+.invalid input,
+.invalid textarea {
+  margin: 5px 0px;
+  outline: none;
+  border: 1px solid #b40e0e;
+  background-color: black;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 18px;
+  width: 100%;
+  resize: vertical;
+  color: #b40e0e;
+}
+
+.invalid input:focus {
+  border-color: #b40e0e;
+  color: #809db5;
+}
+
+.error-text {
+  margin-top: -5px;
+  font-size: 14px;
+  color: #b40e0e;
 }
